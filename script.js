@@ -1,62 +1,61 @@
-// JavaScript - Lista de convidados
-const convidados = ["Ana", "Carlos", "Beatriz", "Andre", "Paula", "João", "Alice", "Margarida", "Arthur", "Luciana"];
-
-// Função para criar a lista com os nomes em maiúsculo
-function displayNamesInUppercase() {
-    let nameList = document.getElementById('name-list');
-    convidados.forEach(name => {
-        let li = document.createElement('li');
-        li.textContent = name.toUpperCase();
-        nameList.appendChild(li);
-    });
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-// Função para criar a lista de nomes que começam com 'A'
-function displayNamesStartingWithA() {
-    let nameListA = document.getElementById('name-list-a');
-    let namesWithA = convidados.filter(name => name.toLowerCase().startsWith('a'));
-    namesWithA.forEach(name => {
-        let li = document.createElement('li');
-        li.textContent = name.toUpperCase();
-        nameListA.appendChild(li);
-    });
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 900px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-// Função para criar a lista de nomes com mais de 5 letras
-function displayNamesLongerThan5() {
-    let nameListLong = document.getElementById('name-list-long');
-    let namesLongerThan5 = convidados.filter(name => name.length > 5);
-    namesLongerThan5.forEach(name => {
-        let li = document.createElement('li');
-        li.textContent = name.toUpperCase();
-        nameListLong.appendChild(li);
-    });
+h1 {
+    color: #0f4c75;
 }
 
-// Função que utiliza range() para criar uma faixa de números (em JS, usamos uma função customizada)
-function range(start, end) {
-    let result = [];
-    for (let i = start; i <= end; i++) {
-        result.push(i);
-    }
-    return result;
+h2 {
+    color: #3282b8;
 }
 
-// Exemplo de uso do range (gerar um array de 1 a 5)
-let rangeExample = range(1, 5);
-console.log("Exemplo de range():", rangeExample);
-
-// Função para alternar a visibilidade das listas
-function toggleList(listId) {
-    const list = document.getElementById(listId);
-    if (list.style.display === 'none' || list.style.display === '') {
-        list.style.display = 'block';
-    } else {
-        list.style.display = 'none';
-    }
+input {
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 2px solid #3282b8;
+    outline: none;
 }
 
-// Chama as funções para exibir as listas (essas funções criam as listas, mas elas ficam ocultas até o clique)
-displayNamesInUppercase();
-displayNamesStartingWithA();
-displayNamesLongerThan5();
+input:focus {
+    border-color: #0f4c75;
+}
+
+.listas {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #bbe1fa;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #0f4c75;
+}
