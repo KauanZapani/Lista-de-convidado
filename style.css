@@ -1,9 +1,9 @@
-/* CSS - Estilização das listas e botões */
+/* Estilização da página */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9; /* Cor de fundo suave */
+    background-color: #f1faff; /* Fundo suave em azul claro */
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
@@ -11,84 +11,98 @@ body {
     box-sizing: border-box;
 }
 
+/* Container para o conteúdo */
 .container {
-    background-color: white; /* Fundo branco para o container */
-    padding: 30px 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: #ffffff; /* Fundo branco para o container */
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
     max-width: 600px;
     width: 100%;
     text-align: center; /* Centraliza o texto */
 }
 
+/* Título da lista */
 h2 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px; /* Aumenta o tamanho do título */
+    color: #003366; /* Azul escuro */
+    margin-bottom: 25px;
+    font-size: 30px; /* Tamanho maior para o título */
+    font-weight: bold;
 }
 
-/* Listas ocultas inicialmente */
+/* Listas */
 ul {
     list-style-type: none;
-    display: none; /* As listas começam escondidas */
     padding: 0;
-    margin-top: 20px;
+    margin: 0;
+    display: block;
     transition: all 0.3s ease-in-out; /* Transição suave */
 }
 
 /* Estilo dos itens da lista */
 li {
-    padding: 12px;
-    background-color: #f9f9f9;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease; /* Suaviza a troca de cor */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve nos itens */
+    background-color: #e6f0ff; /* Azul claro para os itens */
+    color: #003366; /* Texto em azul escuro */
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra leve nos itens */
+    font-size: 18px;
+    transition: background-color 0.3s ease; /* Efeito suave ao passar o mouse */
 }
 
+/* Efeito hover nos itens da lista */
 li:hover {
-    background-color: #f0f0f0; /* Adiciona um efeito de hover */
+    background-color: #cce0ff; /* Azul um pouco mais forte no hover */
 }
 
-/* Estilo para o container de botões */
+/* Container de botões */
 .button-container {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 /* Estilo dos botões */
 .button-container button {
-    padding: 12px 20px;
-    font-size: 16px;
-    background-color: #007BFF;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #0066cc; /* Azul mais intenso */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Adiciona transição suave */
-    width: 100%; /* Faz o botão ocupar toda a largura do container */
-    max-width: 200px; /* Limita a largura máxima do botão */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transição suave */
+    width: 100%; /* Faz o botão ocupar toda a largura */
+    max-width: 250px; /* Largura máxima */
     margin: 0 auto; /* Centraliza o botão */
     display: block;
 }
 
-/* Efeito ao passar o mouse sobre o botão */
+/* Efeito de hover no botão */
 .button-container button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px); /* Leve animação ao passar o mouse */
+    background-color: #004d99;
+    transform: translateY(-2px); /* Leve animação de elevação */
 }
 
-/* Efeito ao focar no botão (acessibilidade) */
+/* Efeito de foco (acessibilidade) */
 .button-container button:focus {
-    outline: 2px solid #0056b3; /* Foco mais visível */
+    outline: 3px solid #004d99; /* Contorno visível no foco */
 }
 
-/* Responsividade - Ajuste para telas menores */
+/* Responsividade para telas menores */
 @media (max-width: 600px) {
     .container {
         padding: 20px; /* Menos padding em telas pequenas */
     }
 
+    h2 {
+        font-size: 26px; /* Ajusta o tamanho do título em telas pequenas */
+    }
+
     .button-container button {
-        font-size: 14px;
+        font-size: 16px; /* Ajusta o tamanho da fonte no botão */
+    }
+
+    li {
+        font-size: 16px; /* Ajusta o tamanho da fonte na lista */
     }
 }
