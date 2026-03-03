@@ -1,82 +1,66 @@
-/* Estilos principais */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Arial', sans-serif;
-    background: #eaf2f8;
+    background-color: #e3f2fd; /* Azul bem claro */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
 }
 
 .container {
     background-color: #ffffff;
+    width: 100%;
+    max-width: 800px;
     padding: 30px;
-    width: 90%;
-    max-width: 950px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     text-align: center;
-    box-sizing: border-box;
 }
 
-h1 {
-    color: #1f4068;
-    margin-bottom: 20px;
+h1 { color: #0d47a1; } /* Azul marinho */
+h2 { 
+    color: #1976d2; 
+    font-size: 1.2rem;
+    border-bottom: 2px solid #bbdefb;
+    padding-bottom: 5px;
 }
 
-h2 {
-    color: #1e3a5f;
-    font-size: 18px;
-    margin-bottom: 10px;
-    text-align: left;
-}
-
-input {
+#searchInput {
     width: 80%;
     padding: 12px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: 2px solid #1f4068;
+    margin: 20px 0;
+    border: 2px solid #90caf9;
+    border-radius: 25px;
     outline: none;
-    font-size: 16px;
+    transition: 0.3s;
 }
 
-input:focus {
-    border-color: #1e3a5f;
+#searchInput:focus {
+    border-color: #1e88e5;
+    box-shadow: 0 0 8px rgba(30, 136, 229, 0.3);
 }
 
-.listas {
-    display: flex;
-    justify-content: space-between;
+.lists-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
-ul {
+.guest-list {
     list-style: none;
     padding: 0;
     text-align: left;
-    width: 100%;
 }
 
-li {
-    background-color: #a9d6e5;
+.guest-list li {
+    background: #f1f8ff;
+    margin: 5px 0;
     padding: 10px;
-    margin: 8px 0;
-    border-radius: 6px;
-    color: #1f4068;
-    font-weight: bold;
-}
-
-@media (max-width: 768px) {
-    .listas {
-        flex-direction: column;
-        align-items: center;
-    }
+    border-left: 4px solid #2196f3;
+    border-radius: 4px;
+    font-weight: 500;
+    color: #333;
 }
