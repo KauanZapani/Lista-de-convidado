@@ -2,40 +2,34 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Convidados</title>
-    <!-- Link para o arquivo CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h2>Lista de Convidados</h2>
-    
-    <div class="button-container">
-        <!-- Botões para mostrar cada lista -->
-        <button onclick="toggleList('name-list')">Mostrar Convidados em Maiúsculo</button>
-        <button onclick="toggleList('name-list-a')">Mostrar Convidados com A</button>
-        <button onclick="toggleList('name-list-long')">Mostrar Convidados com Mais de 5 Letras</button>
+    <div class="container">
+        <h1>Lista de Convidados</h1>
+
+        <input type="text" id="search" placeholder="Pesquisar nome...">
+
+        <div class="listas">
+            <div>
+                <h2>Todos os Convidados</h2>
+                <ul id="listaTodos"></ul>
+            </div>
+
+            <div>
+                <h2>Começam com A</h2>
+                <ul id="listaA"></ul>
+            </div>
+
+            <div>
+                <h2>Mais de 5 Letras</h2>
+                <ul id="lista5"></ul>
+            </div>
+        </div>
     </div>
 
-    <!-- Listas -->
-    <div class="name-list">
-        <h3>Convidados em Maiúsculo:</h3>
-        <ul id="name-list"></ul>
-    </div>
-
-    <div class="name-list-a">
-        <h3>Convidados que começam com A:</h3>
-        <ul id="name-list-a"></ul>
-    </div>
-
-    <div class="name-list-long">
-        <h3>Convidados com mais de 5 letras:</h3>
-        <ul id="name-list-long"></ul>
-    </div>
-
-    <!-- Link para o arquivo JavaScript -->
     <script src="script.js"></script>
-
 </body>
 </html>
