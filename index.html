@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Convidados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            display: none; /* As listas começam escondidas */
+        }
+        li {
+            padding: 8px;
+            background-color: #f2f2f2;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+        .button-container {
+            margin-bottom: 20px;
+        }
+        .button-container button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Lista de Convidados</h2>
+    
+    <div class="button-container">
+        <button onclick="toggleList('name-list')">Mostrar Convidados em Maiúsculo</button>
+        <button onclick="toggleList('name-list-a')">Mostrar Convidados com A</button>
+        <button onclick="toggleList('name-list-long')">Mostrar Convidados com Mais de 5 Letras</button>
+    </div>
+
+    <!-- Listas -->
+    <div class="name-list">
+        <h3>Convidados em Maiúsculo:</h3>
+        <ul id="name-list"></ul>
+    </div>
+
+    <div class="name-list-a">
+        <h3>Convidados que começam com A:</h3>
+        <ul id="name-list-a"></ul>
+    </div>
+
+    <div class="name-list-long">
+        <h3>Convidados com mais de 5 letras:</h3>
+        <ul id="name-list-long"></ul>
+    </div>
+
+    <script>
+        // Lista de nomes
+        const convidados = ["Ana", "Carlos", "Beatriz", "Andre", "Paula", "João", "Alice", "Margarida", "Arthur", "Luciana"];
+
+        // Função para criar a lista com os nomes em maiúsculo
+        function displayNamesInUppercase() {
+            let nameList = document.getElementById('name-list');
+            convidados.forEach(name => {
+                let li = document.createElement('li');
+                li.textContent = name.toUpperCase();
+                nameList.appendChild(li);
+            });
+        }
+
+        // Função para criar a lista de nomes que começam com 'A'
+        function displayNamesStartingWithA() {
+            let nameListA = document.getElementById('name-list-a');
+            let namesWithA = convidados.filter(name => name.toLowerCase().startsWith('a'));
+            namesWithA.forEach(name => {
+                let li = document.createElement('li');
+                li.textContent = name.toUpperCase();
+                nameListA.appendChild(li);
+            });
+        }
+
+        // Função para criar a lista de nomes com mais de 5 letras
+        function displayNamesLongerThan5() {
+            let nameListLong = document.getElementById('name-list-long');
+            let namesLongerThan5 = convidados.filter(name => name.length > 5);
+            namesLongerThan5.forEach(name => {
+                let li = document.createElement('li');
+                li.textContent = name.toUpperCase();
+                nameListLong.appendChild(li);
+            });
+        }
+
+        // Função que utiliza range() para criar uma faixa de números (em JS, usamos uma função customizada)
+        function range(start, end) {
+            let result = [];
+            for (let i = start; i <= end; i++) {
+                result.push(i);
+            }
+            return result;
+        }
+
+        // Exemplo de uso do range (gerar um array de 1 a 5)
+        let rangeExample = range(1, 5);
+        console.log("Exemplo de range():", rangeExample);
+
+        // Função para alternar a visibilidade das listas
+        function toggleList(listId) {
+            const list = document.getElementById(listId);
+            if (list.style.display === 'none' || list.style.display === '') {
+                list.style.display = 'block';
+            } else {
+                list.style.display = 'none';
+            }
+        }
+
+        // Chama as funções para exibir as listas (essas funções criam as listas, mas elas ficam ocultas até o clique)
+        displayNamesInUppercase();
+        displayNamesStartingWithA();
+        displayNamesLongerThan5();
+    </script>
+
+</body>
+</html>
