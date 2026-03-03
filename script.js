@@ -1,61 +1,58 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+const convidados = [
+    "Ana",
+    "Bruno",
+    "Amanda",
+    "Carlos",
+    "Alessandra",
+    "Beatriz",
+    "Antonio",
+    "Fernanda",
+    "João",
+    "Alexandre",
+    "Mariana"
+];
+
+const listaTodos = document.getElementById("listaTodos");
+const listaA = document.getElementById("listaA");
+const lista5 = document.getElementById("lista5");
+const searchInput = document.getElementById("search");
+
+function renderizarListas(filtro = "") {
+    listaTodos.innerHTML = "";
+    listaA.innerHTML = "";
+    lista5.innerHTML = "";
+
+    for (let i = 0; i < convidados.length; i++) {
+        let nome = convidados[i].toUpperCase();
+
+        if (nome.includes(filtro.toUpperCase())) {
+
+            // Adicionando na lista Todos
+            let liTodos = document.createElement("li");
+            liTodos.textContent = nome;
+            listaTodos.appendChild(liTodos);
+
+            // Adicionando na lista Começam com A
+            if (nome.startsWith("A")) {
+                let liA = document.createElement("li");
+                liA.textContent = nome;
+                listaA.appendChild(liA);
+            }
+
+            // Adicionando na lista Mais de 5 Letras
+            if (nome.length > 5) {
+                let li5 = document.createElement("li");
+                li5.textContent = nome;
+                lista5.appendChild(li5);
+            }
+        }
+    }
 }
 
-.container {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    width: 80%;
-    max-width: 900px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
+// Evento de pesquisa
+searchInput.addEventListener("input", function () {
+    renderizarListas(this.value);
+});
 
-h1 {
-    color: #0f4c75;
-}
-
-h2 {
-    color: #3282b8;
-}
-
-input {
-    padding: 10px;
-    width: 80%;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: 2px solid #3282b8;
-    outline: none;
-}
-
-input:focus {
-    border-color: #0f4c75;
-}
-
-.listas {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    background-color: #bbe1fa;
-    margin: 5px 0;
-    padding: 8px;
-    border-radius: 6px;
-    font-weight: bold;
-    color: #0f4c75;
-}
+// Inicializando as listas
+renderizarListas();
