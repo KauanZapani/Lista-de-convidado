@@ -10,25 +10,24 @@
 
     <div class="container">
         <h1>Lista de Convidados</h1>
+        
+        <input type="text" id="searchInput" placeholder="Pesquisar nome...">
 
-        <!-- Barra de pesquisa -->
-        <input type="text" id="search" placeholder="Pesquisar nome..." />
+        <div class="lists-wrapper">
+            <section>
+                <h2>Começam com "A"</h2>
+                <ul id="listaA" class="guest-list"></ul>
+            </section>
 
-        <div class="listas">
-            <div>
-                <h2>Todos os Convidados</h2>
-                <ul id="listaTodos"></ul>
-            </div>
-
-            <div>
-                <h2>Começam com A</h2>
-                <ul id="listaA"></ul>
-            </div>
-
-            <div>
+            <section>
                 <h2>Mais de 5 Letras</h2>
-                <ul id="lista5"></ul>
-            </div>
+                <ul id="listaLongos" class="guest-list"></ul>
+            </section>
+
+            <section>
+                <h2>Outros Convidados</h2>
+                <ul id="listaOutros" class="guest-list"></ul>
+            </section>
         </div>
     </div>
 
