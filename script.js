@@ -1,58 +1,45 @@
 const convidados = [
-    "Ana",
-    "Bruno",
-    "Amanda",
-    "Carlos",
-    "Alessandra",
-    "Beatriz",
-    "Antonio",
-    "Fernanda",
-    "João",
-    "Alexandre",
-    "Mariana"
+    "Ana", "Bernardo", "Amanda", "Carlos", "Alice", 
+    "Gustavo", "Beatriz", "Leonardo", "Arthur", "Zoe"
 ];
 
-const listaTodos = document.getElementById("listaTodos");
-const listaA = document.getElementById("listaA");
-const lista5 = document.getElementById("lista5");
-const searchInput = document.getElementById("search");
+const inputBusca = document.getElementById('searchInput');
 
 function renderizarListas(filtro = "") {
-    listaTodos.innerHTML = "";
+    // Limpar as listas antes de renderizar
+    const listaA = document.getElementById('listaA');
+    const listaLongos = document.getElementById('listaLongos');
+    const listaOutros = document.getElementById('listaOutros');
+    
     listaA.innerHTML = "";
-    lista5.innerHTML = "";
+    listaLongos.innerHTML = "";
+    listaOutros.innerHTML = "";
 
-    for (let i = 0; i < convidados.length; i++) {
-        let nome = convidados[i].toUpperCase();
+    // Loop principal
+    convidados.forEach(nome => {
+        const nomeUpper = nome.toUpperCase();
+        
+        // Verifica se o nome passa pelo filtro da barra de pesquisa
+        if (nomeUpper.includes(filtro.toUpperCase())) {
+            const li = document.createElement('li');
+            li.textContent = nomeUpper;
 
-        if (nome.includes(filtro.toUpperCase())) {
-
-            // Adicionando na lista Todos
-            let liTodos = document.createElement("li");
-            liTodos.textContent = nome;
-            listaTodos.appendChild(liTodos);
-
-            // Adicionando na lista Começam com A
-            if (nome.startsWith("A")) {
-                let liA = document.createElement("li");
-                liA.textContent = nome;
-                listaA.appendChild(liA);
-            }
-
-            // Adicionando na lista Mais de 5 Letras
-            if (nome.length > 5) {
-                let li5 = document.createElement("li");
-                li5.textContent = nome;
-                lista5.appendChild(li5);
+            // Lógica de separação
+            if (nomeUpper.startsWith('A')) {
+                listaA.appendChild(li);
+            } else if (nomeUpper.length > 5) {
+                listaLongos.appendChild(li);
+            } else {
+                listaOutros.appendChild(li);
             }
         }
-    }
+    });
 }
 
-// Evento de pesquisa
-searchInput.addEventListener("input", function () {
-    renderizarListas(this.value);
+// Evento de digitação na barra de pesquisa
+inputBusca.addEventListener('input', (e) => {
+    renderizarListas(e.target.value);
 });
 
-// Inicializando as listas
+// Inicializa a lista ao carregar a página
 renderizarListas();
