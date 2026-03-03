@@ -1,108 +1,58 @@
-/* Estilização da página */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f1faff; /* Fundo suave em azul claro */
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 100vh; /* Altura total da tela */
-    box-sizing: border-box;
-}
+const convidados = [
+    "Ana",
+    "Bruno",
+    "Amanda",
+    "Carlos",
+    "Alessandra",
+    "Beatriz",
+    "Antonio",
+    "Fernanda",
+    "João",
+    "Alexandre",
+    "Mariana"
+];
 
-/* Container para o conteúdo */
-.container {
-    background-color: #ffffff; /* Fundo branco para o container */
-    padding: 40px 50px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    max-width: 600px;
-    width: 100%;
-    text-align: center; /* Centraliza o texto */
-}
+const listaTodos = document.getElementById("listaTodos");
+const listaA = document.getElementById("listaA");
+const lista5 = document.getElementById("lista5");
+const searchInput = document.getElementById("search");
 
-/* Título da lista */
-h2 {
-    color: #003366; /* Azul escuro */
-    margin-bottom: 25px;
-    font-size: 30px; /* Tamanho maior para o título */
-    font-weight: bold;
-}
+function renderizarListas(filtro = "") {
+    listaTodos.innerHTML = "";
+    listaA.innerHTML = "";
+    lista5.innerHTML = "";
 
-/* Listas */
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: block;
-    transition: all 0.3s ease-in-out; /* Transição suave */
-}
+    for (let i = 0; i < convidados.length; i++) {
+        let nome = convidados[i].toUpperCase();
 
-/* Estilo dos itens da lista */
-li {
-    background-color: #e6f0ff; /* Azul claro para os itens */
-    color: #003366; /* Texto em azul escuro */
-    padding: 15px;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra leve nos itens */
-    font-size: 18px;
-    transition: background-color 0.3s ease; /* Efeito suave ao passar o mouse */
-}
+        if (nome.includes(filtro.toUpperCase())) {
 
-/* Efeito hover nos itens da lista */
-li:hover {
-    background-color: #cce0ff; /* Azul um pouco mais forte no hover */
-}
+            // Lista geral
+            let liTodos = document.createElement("li");
+            liTodos.textContent = nome;
+            listaTodos.appendChild(liTodos);
 
-/* Container de botões */
-.button-container {
-    margin-top: 30px;
-}
+            // Começam com A
+            if (nome.startsWith("A")) {
+                let liA = document.createElement("li");
+                liA.textContent = nome;
+                listaA.appendChild(liA);
+            }
 
-/* Estilo dos botões */
-.button-container button {
-    padding: 15px 30px;
-    font-size: 18px;
-    background-color: #0066cc; /* Azul mais intenso */
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transição suave */
-    width: 100%; /* Faz o botão ocupar toda a largura */
-    max-width: 250px; /* Largura máxima */
-    margin: 0 auto; /* Centraliza o botão */
-    display: block;
-}
-
-/* Efeito de hover no botão */
-.button-container button:hover {
-    background-color: #004d99;
-    transform: translateY(-2px); /* Leve animação de elevação */
-}
-
-/* Efeito de foco (acessibilidade) */
-.button-container button:focus {
-    outline: 3px solid #004d99; /* Contorno visível no foco */
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 600px) {
-    .container {
-        padding: 20px; /* Menos padding em telas pequenas */
-    }
-
-    h2 {
-        font-size: 26px; /* Ajusta o tamanho do título em telas pequenas */
-    }
-
-    .button-container button {
-        font-size: 16px; /* Ajusta o tamanho da fonte no botão */
-    }
-
-    li {
-        font-size: 16px; /* Ajusta o tamanho da fonte na lista */
+            // Mais de 5 letras
+            if (nome.length > 5) {
+                let li5 = document.createElement("li");
+                li5.textContent = nome;
+                lista5.appendChild(li5);
+            }
+        }
     }
 }
+
+// Evento de pesquisa
+searchInput.addEventListener("keyup", function () {
+    renderizarListas(this.value);
+});
+
+// Inicializa a lista
+renderizarListas();
