@@ -1,58 +1,82 @@
-const convidados = [
-    "Ana",
-    "Bruno",
-    "Amanda",
-    "Carlos",
-    "Alessandra",
-    "Beatriz",
-    "Antonio",
-    "Fernanda",
-    "João",
-    "Alexandre",
-    "Mariana"
-];
-
-const listaTodos = document.getElementById("listaTodos");
-const listaA = document.getElementById("listaA");
-const lista5 = document.getElementById("lista5");
-const searchInput = document.getElementById("search");
-
-function renderizarListas(filtro = "") {
-    listaTodos.innerHTML = "";
-    listaA.innerHTML = "";
-    lista5.innerHTML = "";
-
-    for (let i = 0; i < convidados.length; i++) {
-        let nome = convidados[i].toUpperCase();
-
-        if (nome.includes(filtro.toUpperCase())) {
-
-            // Lista geral
-            let liTodos = document.createElement("li");
-            liTodos.textContent = nome;
-            listaTodos.appendChild(liTodos);
-
-            // Começam com A
-            if (nome.startsWith("A")) {
-                let liA = document.createElement("li");
-                liA.textContent = nome;
-                listaA.appendChild(liA);
-            }
-
-            // Mais de 5 letras
-            if (nome.length > 5) {
-                let li5 = document.createElement("li");
-                li5.textContent = nome;
-                lista5.appendChild(li5);
-            }
-        }
-    }
+/* Estilos principais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-// Evento de pesquisa
-searchInput.addEventListener("keyup", function () {
-    renderizarListas(this.value);
-});
+body {
+    font-family: 'Arial', sans-serif;
+    background: #eaf2f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-// Inicializa a lista
-renderizarListas();
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    width: 90%;
+    max-width: 950px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #1f4068;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #1e3a5f;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+input {
+    width: 80%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 2px solid #1f4068;
+    outline: none;
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: #1e3a5f;
+}
+
+.listas {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+}
+
+li {
+    background-color: #a9d6e5;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    color: #1f4068;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .listas {
+        flex-direction: column;
+        align-items: center;
+    }
+}
